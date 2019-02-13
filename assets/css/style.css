@@ -1,0 +1,13 @@
+body {
+    background: url("../images/leaves.png") repeat;
+}
+
+button:hover {
+     border: none;
+     cursor: pointer;
+     font-weight: bold;
+     color-adjust: purple;
+     background-color: yellowgreen;
+     border-radius: 15px;
+}
+
