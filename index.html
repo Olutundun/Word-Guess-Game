@@ -1,74 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/reset.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/reset.css" type="text/css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
-    
-    <script src="assets/javascript/game.js"></script>
     <title>Word Guess Game</title>
-</head>
+  </head>
 
-<body>
-         <div class="container">
-        <div class="text-danger">
-         <h1>Hangman: Avengers Edition <img src="assets/images/avengers picture.jpg" style="width:500px;height:150px""></h1>
-</div>
-         </div>
-
-<div class=container>
-<div class="card text-center">
-    <div id="rules" class="card-header p-3 text-danger bg-transparent mb-2 font-weight-bold">
-        Guess the word associated with avengers. PRESS ANY KEY TO GET STARTED!!!
+  <body>
+    <div class="container">
+      <div class="text-danger">
+        <h1>
+          Hangman: Avengers Edition
+          <img
+            src="assets/images/avengers picture.jpg"
+            style="width:500px;height:150px"
+          />
+        </h1>
       </div>
-      
-    <div class="card-body">
-        <div class="row">
-            <div class="col-xs-12 col-md-6"></div>
-            <div class="col-6 text-dark font-weight-bold lead m-2 text-justified" id="winCount">
-                Wins: 0
-            </div>
-        </div>
-        <div class="row">
-                <div class="col-md-4 offset-md-6 text-primary font-weight-bold" id="CurrentWord">CURRENT WORD: </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-xs-12 col-md-6"></div>
-            <div class="col-6 text-dark font-weight-bold lead m-2 text-justified" id="lossCount">
-                Losses: 0
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-6"></div>
-            <div class="col-6 text-dark font-weight-bold lead m-2 text-justified" id="guessesLeft">
-                Number of guesses remaining: 9
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-6"></div>
-            <div class="col-6 text-dark font-weight-bold lead m-2 text-justified" id="lettersUsed">
-            Letters already used:  <class="underScore">_ _ _ _ _ _</div>
-        </div>      
-     </div>
+    </div>
 
+    <div class="container">
+      <div class="card text-center">
+        <div
+          id="rules"
+          class="card-header p-3 text-danger bg-transparent mb-2 font-weight-bold"
+        >
+          PRESS ENTER KEY TO BEGIN!!!
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-xs-12 col-md-6"></div>
+            <div
+              class="col-6 text-dark font-weight-bold lead m-2 text-justified"
+              id="win-count"
+            >
+              Wins:
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-md-6"></div>
+            <div
+              class="col-6 text-dark font-weight-bold lead m-2 text-justified"
+              id="loss-count"
+            >
+              Losses:
+            </div>
+          </div>
+
+          <div class="row">
+            <div
+              class="col-xs-12 text-dark font-weight-bold lead m-2 text-justified"
+              id="word-placeholder"
+            >
+              Your Guess: <span> </span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-md-6"></div>
+            <div
+              class="col-6 text-dark font-weight-bold lead m-2 text-justified"
+              id="wrong-letters"
+            >
+              Wrong Letters:
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-md-6"></div>
+            <div
+              class="col-6 text-dark font-weight-bold lead m-2 text-justified"
+              id="guesses-left"
+            >
+              Number of guesses remaining:
+            </div>
+          </div>
+        </div>
 
         <div class="row">
-            <div class="col-8"></div>
-            <div class="col-2">
-                <button type="button" class="btn btn-danger border border-dark" id="newGame">New Game</button> <br>
-                <span id="message">May the force be with you!</span>
-            </div>
+          <div class="col-8"></div>
+          <div class="col-2">
+            <button
+              type="button"
+              class="btn btn-danger border border-dark"
+              id="reset-button" onclick="reset_fields()"
+            >
+              New Game
+            </button>
+            <br />
+            <span id="message">May the force be with you!</span>
+          </div>
         </div>
-</div>
-        
-    </div>  
-     
+      </div>
+    </div>
+
     <footer class="page-footer font-small blue">
-            <div class="row"><div class="col-12 footer-copyright text-center fixed-bottom">Copyright 2019 &copy;</div></div> 
-           </footer>
-</body>
+      <div class="row">
+        <div class="col-12 footer-copyright text-center fixed-bottom">
+          Olutundun 2019 &copy;
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/javascript/game.js"></script>
+  </body>
 </html>
